@@ -6,6 +6,7 @@ class Post{
         this.post_id = data.post_id;
         this.post_title = data.post_title;
         this.post_body = data.post_body;
+        this.post_sign = data.post_sign;
     }
     
     //retrive all posts
