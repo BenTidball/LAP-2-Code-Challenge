@@ -4,8 +4,8 @@ const Post = require('../models/post');
 //retrieve all posts in the database
 router.get('/all', async (req, res) =>{
     try {
-        const posts = await Post.getPosts();
-        res.json(posts);
+        const postsData = await Post.getPosts();
+        res.json(postsData);
     } catch (err) {
         res.status(404).send({ err });
     }
@@ -14,8 +14,8 @@ router.get('/all', async (req, res) =>{
 //get post from database by its ID
 router.get('/:id', async (req, res) =>{
     try {
-        const posts = await Post.getPostsById(req.body.post_id);
-        res.json(posts);
+        const postData = await Post.getPostsById(req.body.post_id);
+        res.json(postData);
     } catch (err) {
         res.status(404).send({ err });
     }
@@ -24,8 +24,8 @@ router.get('/:id', async (req, res) =>{
 //create a new post instance
 router.post('/create', async (req, res) =>{
     try {
-        const posts = await Post.createPost(req.body);
-        res.json(posts);
+        const postData = await Post.createPost(req.body);
+        res.json(postData);
     } catch (err) {
         res.status(404).send({ err });
     }
