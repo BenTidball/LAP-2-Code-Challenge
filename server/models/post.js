@@ -3,6 +3,7 @@ const db = require('../dbinit');
 //pass sql data through class constructor to create array containing json like data
 class Post{
     constructor(data){
+        this.post_id = data.post_id;
         this.post_title = data.post_title;
         this.post_body = data.post_body;
     }
