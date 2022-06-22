@@ -1,0 +1,35 @@
+version: '1'
+services:
+
+  server:
+    image: 'node:latest' # docker image/template
+    working_dir: /server  # assign name of working directory within docker
+    ports: 
+      - 3000:3000
+    environment: 
+      - PGUSER=user # postgres username
+      - PGHOST=database # postgres looking for host service name
+      - PGPASSWORD=pass # postgres password
+      - PGDATABASE=posts # postgres set name of database
+      - PGPORT=5432 # postgres default port
+    depends_on:
+      - database
+    volumes:
+      - type: bind
+        source: ./ # use files within current directory
+        target: /server # dockers working directory will use the source files
+    command: bash -c "npm install && npm run dev" # dockers will bash for required node modules
+
+  database:
+    image: 'postgres:latest'
+    environment:
+      - POSTGRES_USER=user #database access username
+      - POSTGRES_PASSWORD=pass #database access password
+      - POSTGRES_DB=posts #database name
+    volumes:
+      - "dbdata:/var/lib/postgresql/data"
+      - "./db:/docker-entrypoint-initdb.d/:ro" #The official PostgreSQL Docker image allows us to place SQL files 
+                                            #in the ./db folder, and the first time the service starts, 
+                                            #it will import and execute those SQL files. 
+volumes:
+  dbdata:
