@@ -37,8 +37,10 @@ router.get('/:id', async (req, res) =>{
 ```
 
 ## Create a new post instance</br>
-Expect: status(201), response(postsData)</br>
-`postData` is a JSON response object of the returned database entry
+Expect: status(201),  request(createPostData), response(postsData)</br>
+`createPostData` is a JSON request object containing the POST data to create a new post in the database containing: </br>
+`[{post_title: "title"}, {post_body: "body"}, {post_sign: "signed"}]`  </br>
+`postData` is a JSON response object of the returned new database entry
 ```
 router.post('/create', async (req, res) =>{
     //post code block
