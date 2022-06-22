@@ -1,6 +1,7 @@
 const app = require('./server');
 
-const port = process.env.PORT || 5200;
+//launch server on docker environment port or 3000
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
-    console.log(`Server running on port: ${port}`)
+    console.log(`Server running on port: ${port}`);
 });

@@ -1,8 +1,8 @@
 DROP TABLE IF EXISTS posts;
 
 CREATE TABLE posts(
-    post_id int PRIMARY KEY,
-    post_header CHAR(25),
-    post_body CHAR(250)
+    post_id serial PRIMARY KEY,
+    post_title VARCHAR(25) NOT NULL,
+    post_body VARCHAR(250) NOT NULL
 )
 
