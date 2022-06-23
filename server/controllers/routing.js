@@ -28,6 +28,7 @@ router.post('/create', async (req, res) =>{
         res.status(201).send(postData);
     } catch (err) {
         res.status(404).send(err);
+
     }
 })
 
