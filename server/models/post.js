@@ -32,8 +32,8 @@ class Post{
     //add a new post to database
     static async createPost(data){
         try{
-            const posts = await db.query(`INSERT INTO posts ("post_title", "post_body") 
-                                            VALUES(${data.post_title}, ${data.post_body}) RETURNING *;`);
+            const posts = await db.query(`INSERT INTO posts (post_title, post_body, post_sign) 
+                                            VALUES($1, $2, $3);`, [data.post_title, data.post_body, data.post_sign]);
             return posts.rows.map(data => new Post(data));
         }catch(err){
             console.error(err);
