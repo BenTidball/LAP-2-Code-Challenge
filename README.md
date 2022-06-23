@@ -4,16 +4,20 @@
  - When a user hits 'publish', the post should be stored in a database and the client redirected to a show path
  - The user should be able to access their post using that show path even after a server restart
  - Edit and delete functionality is not required
+
 # Installation and usage
 Application and all dependencies is handled and ran on Docker.</br>
 Ensure that docker is currently running and type: `docker compose up` within the terminal within the root of the server directory <i>"LAP-2-Code-Challenge/server"</i></br>
-You can now expect the client to be working in tandem the server which is now running on port 3000.
+You can now expect the client to be working in tandem the server which is now running on port 3000. <br/>
+To stop and the server from running press `ctrl + c`. </br> 
+To remove the built containers type: `docker compose down`
 
 # Technologies
 - HTML
 - JavaScript
 - Docker
     - PostgreSQL
+    - Express
 
 # Routes
 
@@ -39,7 +43,7 @@ router.get('/:id', async (req, res) =>{
 ## Create a new post instance</br>
 Expect: status(201),  request(createPostData), response(postsData)</br>
 `createPostData` is a JSON request object containing the POST data to create a new post in the database containing: </br>
-`[{post_title: "title"}, {post_body: "body"}, {post_sign: "signed"}]`  </br>
+`{post_title: "title", post_body: "body", post_sign: "signed"}`  </br>
 `postData` is a JSON response object of the returned new database entry
 ```
 router.post('/create', async (req, res) =>{
