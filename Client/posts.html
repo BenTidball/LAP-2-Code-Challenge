@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Writing Posts</title>
-    <link rel="stylesheet" href="./styles.css"/>
+    <link rel="stylesheet" href="./styles.css" />
     
   </head>
   <body>
@@ -13,6 +13,15 @@
       <a href="index.html">Home</a>
       <a href="posts.html">Posts</a> 
     </nav>
+
+    <article>
+      <form id="post-message">
+        <input type="text" name="title" id="idTitle" placeholder="Title" />
+        <input type="text" name="pseudonym" id="idpseudonym" placeholder="Name"/>
+        <textarea name="body" id="idbody" placeholder="Enter your message"cols="30" rows="10"></textarea>
+        <button id="publishButton">PUBLISH</button>
+      </form>
+    </article>
 
     <section id="modal" style="display: none;">
         <h2 id='title'></h2>
