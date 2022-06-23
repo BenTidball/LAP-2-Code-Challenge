@@ -1,18 +1,30 @@
+const clientPost = document.querySelector('#publishButton')
+// const modalHeader = document.querySelector('#title')
+// const modalContent = document.querySelector ('#namePara')
+
 async function publishPost(e) {
-    e.preventDefault();
+  const titlePost = document.querySelector('#idTitle')
+  const namePost = document.querySelector('#idpseudonym')
+  const msgPost = document.querySelector('#idbody')
+
+  const postData = {post_title:titlePost, post_body: msgPost, post_sign: namePost};
+    
+  
+  e.preventDefault();
+    
     try {
       const options = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(Object.fromEntries(new FormData(e.target))),
+        body: postData
       };
   
-      const response = await fetch("http://localhost:3000/", options);
-      const { id, err } = await response.json();
-      if (err) {
-        throw Error(err);
+      const response = await fetch("http://localhost:3000/posts/create", options);
+      const res = await response.json();
+      if (res === postData) {
+        window.location.replace('http://localhost:3000/posts/')
       } else {
-        window.location.hash = `#books/${id}`;
+        throw Error(err);
       }
     } catch (err) {
       console.warn(err);
