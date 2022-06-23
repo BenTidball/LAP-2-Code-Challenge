@@ -25,11 +25,14 @@ router.get('/:id', async (req, res) =>{
 router.post('/create', async (req, res) =>{
     try {
         const postData = await Post.createPost(req.body);
-        res.json(postData);
+        res.status(201).send();
     } catch (err) {
         res.status(404).send({ err });
     }
 })
 
+//testing the post function
+// const testPost = {post_title: "Test post", post_body: "Test body", post_sign: "Test"};
+// Post.createPost(testPost);
 
 module.exports = router;
